@@ -8,7 +8,6 @@
 [![Express](https://img.shields.io/badge/Express-4.x-000000?logo=express&logoColor=white&style=flat-square)](https://expressjs.com)
 [![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?logo=mysql&logoColor=white&style=flat-square)](https://mysql.com)
 [![Sequelize](https://img.shields.io/badge/Sequelize-6.x-52B0E7?logo=sequelize&logoColor=white&style=flat-square)](https://sequelize.org)
-[![Jest](https://img.shields.io/badge/Tested-Jest-C21325?logo=jest&logoColor=white&style=flat-square)](https://jestjs.io)
 
 **RESTful API backend untuk DarusTrack — sistem pemantauan perkembangan akademik siswa secara real-time di SDIT Darussalam 01 Batam.**
 
@@ -58,7 +57,7 @@ Dibangun oleh **Backend Developer** — bertanggung jawab penuh atas seluruh ars
 | **Keamanan API** | JWT dual-token dengan rotasi token, rate limiting berlapis dengan Redis fallback, RBAC 4 role |
 | **Performa** | LRU cache untuk autentikasi, composite database index per query pattern, connection pooling |
 | **Maintainability** | Layered Architecture (Route → Middleware → Controller → Model), JSDoc menyeluruh, migration-driven schema |
-| **Reliability** | Jest test suite (unit + integration), global error handler, asyncHandler di setiap route |
+| **Reliability** | global error handler, asyncHandler di setiap route |
 
 ### Scope Backend
 
@@ -102,14 +101,12 @@ Dibangun oleh **Backend Developer** — bertanggung jawab penuh atas seluruh ars
 | **compression** | ^1.8.0 | Gzip response compression — mengurangi bandwidth terutama untuk response list/rekap besar |
 | **fastest-validator** | ^1.19.0 | Schema-based input validation — deklaratif, cepat, konsisten antar controller |
 
-### Utilitas & Testing
+### Utilitas
 
 | Library | Versi | Fungsi |
 |---|---|---|
 | **nanoid** | ^3.3.11 | Primary key ID 10 karakter — tidak bisa di-enumerate seperti auto-increment integer |
 | **morgan** | ~1.9.1 | HTTP request logger — format `dev` di development, `combined` (Apache) di production |
-| **jest** | ^29.7.0 | Test runner — unit test + integration test dengan `--runInBand` untuk isolasi |
-| **supertest** | ^7.1.0 | HTTP assertion untuk integration test endpoint |
 | **dotenv** | ^16.6.1 | Environment variable loader |
 | **nodemon** | ^3.1.14 | Hot-reload development server |
 | **express-async-handler** | ^1.2.0 | Wrapper async route handler — error async otomatis diteruskan ke global error handler |
@@ -679,9 +676,6 @@ npm run dev         # Development dengan hot-reload (nodemon)
 npm run migrate     # Jalankan semua pending migrations
 npm run migrate:undo # Rollback satu migration terakhir
 npm run seed        # Jalankan semua database seeders
-npm test            # Jalankan test suite (Jest --runInBand)
-npm run test:watch  # Test mode watch
-npm run test:coverage # Test dengan laporan coverage
 ```
 
 ---
